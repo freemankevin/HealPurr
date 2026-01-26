@@ -24,17 +24,20 @@ const typeColors: Record<string, string> = {
 };
 ---
 
-<div class="relative pl-10 space-y-10">
-  <div class="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-400 via-pink-400 to-transparent rounded-full shadow-lg shadow-purple-400/30"></div>
+<div class="relative pl-24 space-y-10">
+  <div class="absolute left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-400 via-pink-400 to-transparent rounded-full shadow-lg shadow-purple-400/30"></div>
   
   {records.map((record) => (
     <div class="relative group">
-      <div class="absolute -left-10 w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full border-4 border-slate-900 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-400/50 transition-all duration-300 z-10"></div>
+      <div class="absolute -left-14 w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full border-4 border-slate-900 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-400/50 transition-all duration-300 z-10"></div>
+      
+      <div class="absolute -left-14 top-10 left-2 text-sm text-gray-400 font-medium font-cute-number whitespace-nowrap">
+        {formatDate(record.data.date)}
+      </div>
       
       <a href={`/records/${record.slug}`} class="block">
         <div class="bg-gradient-to-br from-slate-800 to-slate-800/50 rounded-2xl p-6 border border-purple-500/20 hover:border-purple-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 backdrop-blur-sm group-hover:-translate-y-1">
           <div class="flex items-center justify-between mb-3">
-            <span class="text-sm text-gray-400 font-medium font-cute-number">{formatDate(record.data.date)}</span>
             <span class={`text-xs px-3 py-1.5 rounded-full font-medium font-cute ${typeColors[record.data.type] || 'bg-gray-700 text-gray-300'} shadow-sm`}>
               {record.data.type}
             </span>
@@ -48,7 +51,12 @@ const typeColors: Record<string, string> = {
           <p class="text-gray-400 text-base mb-4 leading-relaxed font-cute">
             {record.data.catName} 的医疗记录
             {record.data.doctor && ` · 医生：${record.data.doctor}`}
-            {record.data.weight && ` · 体重：<span class="font-cute-number">${record.data.weight}</span>`}
+            {record.data.weight && (
+              <>
+                {' · 体重：'}
+                <span class="font-cute-number">{record.data.weight}</span>
+              </>
+            )}
           </p>
 
           {record.data.tags && (

@@ -1,72 +1,230 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&family=Comic+Neue:wght@400;700&family=Patrick+Hand&family=Varela+Round&family=Baloo+2:wght@400;500;600;700;800&family=Kalam:wght@300;400;700&family=ZCOOL+QingKe+HuangYou&family=Ma+Shan+Zheng&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Righteous&family=Pacifico&family=Caveat:wght@400;500;600;700&family=Shadows+Into+Light&family=Indie+Flower&family=Amatic+SC:wght@400;700&display=swap');
 
 /* 
- * 全局字体配置 - 卡通手写风格
- *
- * font-cute: 主要的卡通可爱字体
- * font-cute-light: 轻量手写字体
- * font-cute-bold: 粗体卡通字体
- * font-cute-number: 专用数字字体
+ * 🌸 梦幻治愈系字体配置 🌸
+ * 
+ * 设计理念：像在日记本上涂鸦，随性、温暖、充满生命力
  */
 
-/* 主要卡通字体 - 覆盖所有文本 */
-.font-cute {
-  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Poppins', 'Rubik', 'Fredoka', 'Comic Neue', 'Varela Round', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Ma Shan Zheng', cursive, sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+/* === 核心字体变量 === */
+:root {
+  --font-display: 'Righteous', cursive;
+  --font-script: 'Pacifico', cursive;
+  --font-handwrite: 'Caveat', cursive;
+  --font-casual: 'Shadows Into Light', cursive;
+  --font-playful: 'Indie Flower', cursive;
+  --font-sketch: 'Amatic SC', cursive;
+  --font-alex-brush: 'Alex Brush', cursive;
 }
 
-/* 轻量手写字体 - 用于副标题和描述 */
-.font-cute-light {
-  font-family: 'Patrick Hand', 'Kalam', 'Comic Neue', 'Ma Shan Zheng', cursive, sans-serif;
+/* === 全局重置 - 打造呼吸感 === */
+* {
+  font-family: var(--font-handwrite);
+  letter-spacing: 0.025em;
+  line-height: 1.9;
+  word-spacing: 0.05em;
+}
+
+/* === 标题家族 - 每个都有独特个性 === */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+  transform: rotate(-1deg);
+}
+
+h2 {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  transform: rotate(0.5deg);
+}
+
+h3 {
+  font-family: var(--font-sketch);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-family: var(--font-casual);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+h5, h6 {
+  font-family: var(--font-playful);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+/* === 正文 - 像在写日记 === */
+p {
+  font-family: var(--font-handwrite);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 2.1;
+  word-spacing: 0.08em;
+}
+
+/* === 特殊文本样式 === */
+.font-cute {
+  font-family: var(--font-handwrite);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.font-cute-light {
+  font-family: var(--font-casual);
+  font-weight: 400;
+  font-size: 0.95em;
+  opacity: 0.9;
+}
+
+.font-cute-bold {
+  font-family: var(--font-sketch);
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.font-cute-number {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.15em;
+}
+
+.font-alex-brush {
+  font-family: var(--font-alex-brush);
+  font-weight: 400;
+  font-size: 1.2em;
   letter-spacing: 0.02em;
 }
 
-/* 粗体卡通字体 - 用于标题 */
-.font-cute-bold {
-  font-family: 'Outfit', 'Space Grotesk', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
+/* === Header 标题样式 === */
+.header-title {
+  font-family: var(--font-alex-brush);
+  font-weight: 400;
+  font-size: 1.875rem;
+  color: white;
   letter-spacing: 0.05em;
+  transition: color 0.3s ease;
 }
 
-/* 数字专用字体 - 用于日期、数据等 */
-.font-cute-number {
-  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Varela Round', sans-serif;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-}
-
-/* 全局默认字体 - 应用到所有元素 */
-* {
-  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Poppins', 'Rubik', 'Fredoka', 'Comic Neue', 'Varela Round', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Ma Shan Zheng', cursive, sans-serif;
-  letter-spacing: 0.03em;
-}
-
-/* 特定元素字体优化 */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', 'Space Grotesk', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
+.header-title-accent {
+  font-family: var(--font-alex-brush);
+  font-weight: 400;
+  font-size: 1.875rem;
+  color: white;
   letter-spacing: 0.05em;
+  transition: color 0.3s ease;
 }
 
-p, span, div, a, li, td, th {
-  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Poppins', 'Rubik', 'Fredoka', 'Comic Neue', 'Varela Round', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Ma Shan Zheng', cursive, sans-serif;
+/* Header 悬停效果 */
+.group:hover .header-title,
+.group:hover .header-title-accent {
+  color: rgb(221 214 254);
+}
+
+/* === 交互元素 - 让它们活起来 === */
+a {
+  font-family: var(--font-playful);
+  font-weight: 400;
   letter-spacing: 0.03em;
+  text-decoration: underline wavy;
+  text-underline-offset: 0.3em;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* 数字优化 */
+button, .btn {
+  font-family: var(--font-sketch);
+  font-weight: 700;
+  font-size: 1.1em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transform: rotate(-1deg);
+  transition: transform 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* === 列表 - 像涂鸦清单 === */
+li {
+  font-family: var(--font-casual);
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 2;
+  margin-bottom: 0.5em;
+}
+
+/* === 表格 - 手写表格感 === */
+td, th {
+  font-family: var(--font-handwrite);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.8;
+  padding: 0.8em 1em;
+}
+
+th {
+  font-family: var(--font-sketch);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* === 小细节 - 魔鬼在细节中 === */
+span {
+  font-family: inherit;
+}
+
+div {
+  font-family: var(--font-handwrite);
+}
+
 .number-cute {
-  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Varela Round', sans-serif;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
 }
 
-/* 字体平滑渲染 */
+.badge, .tag {
+  font-family: var(--font-sketch);
+  font-weight: 700;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* === 字体渲染魔法 === */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* === 响应式字体缩放 === */
+@media (max-width: 768px) {
+  * {
+    letter-spacing: 0.02em;
+    word-spacing: 0.03em;
+  }
 }
