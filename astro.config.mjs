@@ -6,4 +6,7 @@ export default defineConfig({
   integrations: [mdx(), tailwind()],
   site: 'https://cat.freemankevin.uk',
   base: '',
+  devToolbar: {
+    enabled: false,
+  },
 });

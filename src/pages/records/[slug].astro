@@ -29,30 +29,39 @@ const formatDate = (date: Date) => {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{record.data.title} - HealPurr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+KuaiLe&family=Long+Cang&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-white min-h-screen">
+<body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
   <Header />
   
-  <main class="max-w-3xl mx-auto p-8">
-    <a href="/" class="text-purple-400 hover:text-purple-300 mb-6 inline-block">
-      ← 返回时间线
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <a href="/" class="text-purple-400 hover:text-purple-300 mb-8 inline-flex items-center gap-2 text-lg transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      返回时间线
     </a>
     
-    <article class="bg-gray-800 rounded-lg p-8 border border-gray-700">
-      <div class="mb-6">
-        <div class="flex items-center gap-3 mb-3">
-          <img src={getCatSvg(record.data.cat)} alt={record.data.catName} class="w-10 h-10" />
+    <article class="bg-gradient-to-br from-slate-800 to-slate-800/50 rounded-2xl p-10 border border-purple-500/20 backdrop-blur-sm shadow-2xl shadow-purple-500/10">
+      <div class="mb-8">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="relative">
+            <img src={getCatSvg(record.data.cat)} alt={record.data.catName} class="w-12 h-12 drop-shadow-lg" />
+            <div class="absolute inset-0 bg-purple-400/20 rounded-full blur-xl"></div>
+          </div>
           <div>
-            <h1 class="text-3xl font-bold">{record.data.title}</h1>
-            <p class="text-gray-400 mt-1">{record.data.catName} · {formatDate(record.data.date)}</p>
+            <h1 class="text-4xl font-bold font-cute">{record.data.title}</h1>
+            <p class="text-gray-400 mt-2 text-lg font-cute-light">{record.data.catName} · {formatDate(record.data.date)}</p>
           </div>
         </div>
         
-        <div class="flex gap-4 text-sm text-gray-400 flex-wrap">
-          <span class="bg-purple-900 text-purple-200 px-3 py-1 rounded">{record.data.type}</span>
-          {record.data.doctor && <span>医生：{record.data.doctor}</span>}
-          {record.data.weight && <span>体重：{record.data.weight}</span>}
-          {record.data.temperature && <span>体温：{record.data.temperature}</span>}
+        <div class="flex gap-4 text-base text-gray-400 flex-wrap">
+          <span class="bg-purple-900/60 text-purple-200 px-4 py-2 rounded-full border border-purple-500/30 shadow-sm">{record.data.type}</span>
+          {record.data.doctor && <span class="bg-slate-800 px-4 py-2 rounded-full border border-gray-700">医生：{record.data.doctor}</span>}
+          {record.data.weight && <span class="bg-slate-800 px-4 py-2 rounded-full border border-gray-700">体重：{record.data.weight}</span>}
+          {record.data.temperature && <span class="bg-slate-800 px-4 py-2 rounded-full border border-gray-700">体温：{record.data.temperature}</span>}
         </div>
       </div>
       
@@ -65,22 +74,33 @@ const formatDate = (date: Date) => {
 </html>
 
 <style is:global>
+  .font-cute {
+    font-family: 'ZCOOL KuaiLe', 'Long Cang', 'Noto Sans SC', cursive;
+  }
+  
+  .font-cute-light {
+    font-family: 'Long Cang', 'Noto Sans SC', cursive;
+  }
+  
   .prose h2 {
-    @apply text-2xl font-bold mt-8 mb-4 text-purple-300;
+    @apply text-3xl font-bold mt-10 mb-5 text-purple-300 font-cute-light;
   }
   .prose h3 {
-    @apply text-xl font-semibold mt-6 mb-3 text-purple-200;
+    @apply text-2xl font-semibold mt-8 mb-4 text-purple-200 font-cute-light;
   }
   .prose p {
-    @apply text-gray-300 leading-relaxed mb-4;
+    @apply text-gray-300 leading-relaxed mb-5 text-lg;
   }
   .prose ul, .prose ol {
-    @apply text-gray-300 space-y-2 mb-4;
+    @apply text-gray-300 space-y-3 mb-5 text-lg;
   }
   .prose strong {
-    @apply text-white font-semibold;
+    @apply text-white font-semibold text-purple-200;
   }
   .prose code {
-    @apply bg-gray-700 px-2 py-1 rounded text-purple-300;
+    @apply bg-purple-900/40 px-3 py-1.5 rounded-lg text-purple-300 border border-purple-500/30;
+  }
+  .prose li {
+    @apply leading-relaxed;
   }
 </style>
