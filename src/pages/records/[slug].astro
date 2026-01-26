@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 import { getCatSvg } from '../../config/cats';
 
 export async function getStaticPaths() {
@@ -70,6 +71,8 @@ const formatDate = (date: Date) => {
       </div>
     </article>
   </main>
+
+  <Footer />
 </body>
 </html>
 

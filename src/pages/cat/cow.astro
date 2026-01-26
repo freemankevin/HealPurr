@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Header from '../../components/Header.astro';
 import Timeline from '../../components/Timeline.astro';
 import CatSelector from '../../components/CatSelector.astro';
+import Footer from '../../components/Footer.astro';
 import { getCatById } from '../../config/cats';
 
 const catId = 'cow';
@@ -43,6 +44,8 @@ const sortedRecords = allRecords.sort((a, b) =>
 
     <Timeline records={sortedRecords} />
   </main>
+
+  <Footer />
 </body>
 </html>
 
