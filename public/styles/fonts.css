@@ -11,7 +11,31 @@
 @font-face {
   font-family: 'Caveat';
   src: url('/fonts/Caveat/static/Caveat-Regular.ttf?v=20250126') format('truetype');
-  font-weight: normal;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/Caveat/static/Caveat-Regular.ttf?v=20250126') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/Caveat/static/Caveat-Regular.ttf?v=20250126') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/Caveat/static/Caveat-Regular.ttf?v=20250126') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -122,7 +146,7 @@ p {
 }
 
 .font-cute-number {
-  font-family: 'Ma Shan Zheng', cursive, 'Microsoft YaHei', sans-serif;
+  font-family: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
   font-weight: 400;
   font-size: 1.15em;
 }
@@ -218,7 +242,7 @@ div {
 }
 
 .number-cute {
-  font-family: 'Ma Shan Zheng', cursive, 'Microsoft YaHei', sans-serif;
+  font-family: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
   font-weight: 400;
 }
 
