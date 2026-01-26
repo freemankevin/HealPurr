@@ -1,20 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Righteous&family=Pacifico&family=Caveat:wght@400;500;600;700&family=Shadows+Into+Light&family=Indie+Flower&family=Amatic+SC:wght@400;700&display=swap');
-
 /* 
  * 🌸 梦幻治愈系字体配置 🌸
  * 
  * 设计理念：像在日记本上涂鸦，随性、温暖、充满生命力
  */
 
+/* === 本地字体声明 === */
+@font-face {
+  font-family: 'Righteous';
+  src: url('/fonts/Righteous.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  src: url('/fonts/Pacifico.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/Caveat.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shadows Into Light';
+  src: url('/fonts/ShadowsIntoLight.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Indie Flower';
+  src: url('/fonts/IndieFlower.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amatic SC';
+  src: url('/fonts/AmaticSC.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alex Brush';
+  src: url('/fonts/AlexBrush.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* === 核心字体变量 === */
 :root {
-  --font-display: 'Righteous', cursive;
-  --font-script: 'Pacifico', cursive;
-  --font-handwrite: 'Caveat', cursive;
-  --font-casual: 'Shadows Into Light', cursive;
-  --font-playful: 'Indie Flower', cursive;
-  --font-sketch: 'Amatic SC', cursive;
-  --font-alex-brush: 'Alex Brush', cursive;
+  --font-display: 'Righteous', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Nunito', 'Varela Round', cursive, 'Microsoft YaHei', sans-serif;
+  --font-script: 'Pacifico', 'Alex Brush', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
+  --font-handwrite: 'Caveat', 'Kalam', 'Patrick Hand', 'Comic Neue', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
+  --font-casual: 'Shadows Into Light', 'Kalam', 'Comic Neue', cursive, 'FangSong', '仿宋', 'STFangsong', '华文仿宋', sans-serif;
+  --font-playful: 'Indie Flower', 'Kalam', 'Comic Neue', 'Fredoka', cursive, 'Microsoft YaHei', sans-serif;
+  --font-sketch: 'Amatic SC', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', cursive, 'Microsoft YaHei', sans-serif;
+  --font-alex-brush: 'Alex Brush', 'Pacifico', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
 }
 
 /* === 全局重置 - 打造呼吸感 === */
