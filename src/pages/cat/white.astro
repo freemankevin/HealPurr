@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../../components/Header.astro';
+import Timeline from '../../components/Timeline.astro';
+import CatSelector from '../../components/CatSelector.astro';
+import { getCatById } from '../../config/cats';
+
+const catId = 'white';
+const cat = getCatById(catId)!;
+
+const allRecords = await getCollection('cats', ({ data }) => data.cat === catId);
+const sortedRecords = allRecords.sort((a, b) =>
+  b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小白的健康档案 - HealPurr</title>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <Header />
+
+  <main class="max-w-4xl mx-auto p-8">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-4 flex items-center gap-3">
+        <img src={cat.svg} alt={cat.name} class="w-12 h-12" />
+        <span>{cat.name}的健康档案</span>
+      </h1>
+      <p class="text-gray-400">共 {sortedRecords.length} 条医疗记录</p>
+    </div>
+
+    <CatSelector activeCat={catId} />
+
+    <Timeline records={sortedRecords} />
+  </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+import { cats } from '../config/cats';
+
+const { activeCat } = Astro.props;
+---
+
+<div class="flex gap-3 mb-8 flex-wrap">
+  {cats.map(cat => (
+    <a 
+      href={`/cat/${cat.id}`}
+      class={`px-4 py-2 bg-gray-800 rounded-lg border transition-all ${
+        activeCat === cat.id 
+          ? 'border-purple-500 bg-purple-900' 
+          : `border-gray-700 ${cat.color}`
+      }`}
+    >
+      <img src={cat.svg} alt={cat.name} class="w-6 h-6 mr-2 inline-block" />
+      <span class="text-sm text-white">{cat.name}</span>
+    </a>
+  ))}
+  <a 
+    href="/"
+    class={`px-4 py-2 bg-gray-800 rounded-lg border transition-all ${
+      !activeCat 
+        ? 'border-purple-500 bg-purple-900' 
+        : 'border-gray-700 hover:bg-gray-700'
+    }`}
+  >
+    <span class="text-sm text-white">全部</span>
+  </a>
+</div>

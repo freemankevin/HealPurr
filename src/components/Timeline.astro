@@ -1,0 +1,67 @@
+---
+import { getCatSvg } from '../config/cats';
+
+interface Props {
+  records: any[];
+}
+
+const { records } = Astro.props;
+
+// 格式化日期为 YYYY-MM-DD
+const formatDate = (date: Date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const typeColors: Record<string, string> = {
+  '疫苗': 'bg-blue-900 text-blue-200',
+  '手术': 'bg-red-900 text-red-200',
+  '体检': 'bg-green-900 text-green-200',
+  '治疗': 'bg-yellow-900 text-yellow-200',
+  '复查': 'bg-purple-900 text-purple-200',
+};
+---
+
+<div class="relative pl-8 space-y-8">
+  <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-purple-600 to-transparent"></div>
+  
+  {records.map((record) => (
+    <div class="relative group">
+      <div class="absolute -left-8 w-6 h-6 bg-purple-500 rounded-full border-4 border-gray-900 group-hover:bg-purple-400 transition-colors"></div>
+      
+      <a href={`/records/${record.slug}`} class="block">
+        <div class="bg-gray-800 rounded-lg p-5 border border-gray-700 hover:border-purple-500 transition-all hover:shadow-lg hover:shadow-purple-500/20">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-400">{formatDate(record.data.date)}</span>
+            <span class={`text-xs px-2 py-1 rounded ${typeColors[record.data.type] || 'bg-gray-700 text-gray-300'}`}>
+              {record.data.type}
+            </span>
+          </div>
+          
+          <h3 class="text-lg font-semibold mb-2 text-white flex items-center gap-2">
+            <img src={getCatSvg(record.data.cat)} alt={record.data.catName} class="w-5 h-5" />
+            {record.data.title}
+          </h3>
+          
+          <p class="text-gray-400 text-sm mb-3">
+            {record.data.catName} 的医疗记录
+            {record.data.doctor && ` · 医生：${record.data.doctor}`}
+            {record.data.weight && ` · 体重：${record.data.weight}`}
+          </p>
+          
+          {record.data.tags && (
+            <div class="flex gap-2 flex-wrap">
+              {record.data.tags.map((tag: string) => (
+                <span class="inline-flex items-center gap-1 text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </a>
+    </div>
+  ))}
+</div>

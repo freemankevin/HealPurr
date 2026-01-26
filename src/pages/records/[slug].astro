@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../../components/Header.astro';
+import { getCatSvg } from '../../config/cats';
+
+export async function getStaticPaths() {
+  const records = await getCollection('cats');
+  return records.map(record => ({
+    params: { slug: record.slug },
+    props: { record },
+  }));
+}
+
+const { record } = Astro.props;
+const { Content } = await record.render();
+
+// 格式化日期为 YYYY-MM-DD
+const formatDate = (date: Date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{record.data.title} - HealPurr</title>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <Header />
+  
+  <main class="max-w-3xl mx-auto p-8">
+    <a href="/" class="text-purple-400 hover:text-purple-300 mb-6 inline-block">
+      ← 返回时间线
+    </a>
+    
+    <article class="bg-gray-800 rounded-lg p-8 border border-gray-700">
+      <div class="mb-6">
+        <div class="flex items-center gap-3 mb-3">
+          <img src={getCatSvg(record.data.cat)} alt={record.data.catName} class="w-10 h-10" />
+          <div>
+            <h1 class="text-3xl font-bold">{record.data.title}</h1>
+            <p class="text-gray-400 mt-1">{record.data.catName} · {formatDate(record.data.date)}</p>
+          </div>
+        </div>
+        
+        <div class="flex gap-4 text-sm text-gray-400 flex-wrap">
+          <span class="bg-purple-900 text-purple-200 px-3 py-1 rounded">{record.data.type}</span>
+          {record.data.doctor && <span>医生：{record.data.doctor}</span>}
+          {record.data.weight && <span>体重：{record.data.weight}</span>}
+          {record.data.temperature && <span>体温：{record.data.temperature}</span>}
+        </div>
+      </div>
+      
+      <div class="prose prose-invert prose-purple max-w-none">
+        <Content />
+      </div>
+    </article>
+  </main>
+</body>
+</html>
+
+<style is:global>
+  .prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-purple-300;
+  }
+  .prose h3 {
+    @apply text-xl font-semibold mt-6 mb-3 text-purple-200;
+  }
+  .prose p {
+    @apply text-gray-300 leading-relaxed mb-4;
+  }
+  .prose ul, .prose ol {
+    @apply text-gray-300 space-y-2 mb-4;
+  }
+  .prose strong {
+    @apply text-white font-semibold;
+  }
+  .prose code {
+    @apply bg-gray-700 px-2 py-1 rounded text-purple-300;
+  }
+</style>

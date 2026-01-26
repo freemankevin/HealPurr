@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import Timeline from '../components/Timeline.astro';
+import CatSelector from '../components/CatSelector.astro';
+
+const allRecords = await getCollection('cats');
+const sortedRecords = allRecords.sort((a, b) =>
+  b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealPurr - 猫咪健康档案</title>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <Header />
+  
+  <main class="max-w-4xl mx-auto p-8">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        猫咪健康档案
+      </h1>
+      <p class="text-gray-400">记录每一次就诊，守护每一份健康 🐾</p>
+    </div>
+    
+    <CatSelector activeCat={null} />
+    
+    <Timeline records={sortedRecords} />
+  </main>
+</body>
+</html>
