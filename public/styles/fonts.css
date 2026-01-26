@@ -4,69 +4,14 @@
  * 设计理念：像在日记本上涂鸦，随性、温暖、充满生命力
  *
  * 中文字体：统一使用 Ma Shan Zheng
+ * 英文字体：统一使用 Caveat
  */
 
 /* === 本地字体声明 === */
 @font-face {
   font-family: 'Caveat';
   src: url('/fonts/Caveat/static/Caveat-Regular.ttf?v=20250126') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Caveat';
-  src: url('/fonts/Caveat/static/Caveat-Medium.ttf?v=20250126') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Caveat';
-  src: url('/fonts/Caveat/static/Caveat-SemiBold.ttf?v=20250126') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Caveat';
-  src: url('/fonts/Caveat/static/Caveat-Bold.ttf?v=20250126') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Dancing Script';
-  src: url('/fonts/Dancing_Script/static/DancingScript-Regular.ttf?v=20250126') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Dancing Script';
-  src: url('/fonts/Dancing_Script/static/DancingScript-Medium.ttf?v=20250126') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Dancing Script';
-  src: url('/fonts/Dancing_Script/static/DancingScript-SemiBold.ttf?v=20250126') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Dancing Script';
-  src: url('/fonts/Dancing_Script/static/DancingScript-Bold.ttf?v=20250126') format('truetype');
-  font-weight: 700;
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
@@ -81,13 +26,13 @@
 
 /* === 核心字体变量 === */
 :root {
-  --font-display: 'Ma Shan Zheng', 'Dancing Script', cursive, 'Microsoft YaHei', sans-serif;
-  --font-script: 'Ma Shan Zheng', 'Dancing Script', cursive, 'Microsoft YaHei', sans-serif;
+  --font-display: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
+  --font-script: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
   --font-handwrite: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
   --font-casual: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
   --font-playful: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
   --font-sketch: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
-  --font-alex-brush: 'Ma Shan Zheng', 'Dancing Script', cursive, 'Microsoft YaHei', sans-serif;
+  --font-alex-brush: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
   --font-body: 'Ma Shan Zheng', 'Caveat', 'Microsoft YaHei', sans-serif;
 }
 
