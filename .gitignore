@@ -15,6 +15,7 @@ web_modules/
 # Build outputs
 dist/
 dist-ssr/
+.astro/
 .vercel/
 .netlify/
 
