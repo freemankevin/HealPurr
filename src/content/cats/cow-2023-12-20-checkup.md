@@ -1,6 +1,6 @@
 ---
-cat: black
-catName: 小黑
+cat: cow
+catName: 样儿
 title: 健康体检
 date: 2023-12-20
 type: 体检

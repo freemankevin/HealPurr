@@ -6,9 +6,9 @@ export interface Cat {
 }
 
 export const cats: Cat[] = [
-  { id: 'orange', name: '米儿', svg: '/cats/Tortoiseshell.svg', color: 'hover:bg-orange-900' },
-  { id: 'white', name: '样儿', svg: '/cats/Cow.svg', color: 'hover:bg-gray-700' },
-  { id: 'black', name: '九儿', svg: '/cats/Tabby.svg', color: 'hover:bg-slate-700' },
+  { id: 'tortoiseshell', name: '米儿', svg: '/cats/Tortoiseshell.svg', color: 'hover:bg-orange-900' },
+  { id: 'cow', name: '样儿', svg: '/cats/Cow.svg', color: 'hover:bg-gray-700' },
+  { id: 'tabby', name: '九儿', svg: '/cats/Tabby.svg', color: 'hover:bg-slate-700' },
 ];
 
 // 获取猫咪 ID 列表，用于 content schema

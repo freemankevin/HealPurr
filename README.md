@@ -9,86 +9,19 @@ HealPurr 是一个基于 Astro 构建的猫咪医疗记录博客网站，用于�
 - 🐱 **多猫咪管理** - 支持记录多只猫咪的健康档案
 - 📅 **时间线展示** - 以时间线形式展示所有医疗记录
 - 🏷️ **分类标签** - 支持疫苗、手术、体检、治疗、复查等多种记录类型
-- 📱 **响应式设计** - 完美适配桌面和移动设备
-- 🎨 **美观界面** - 使用 Tailwind CSS 构建的现代化暗色主题
 - 📝 **Markdown 支持** - 使用 Markdown 格式编写详细的医疗记录
-- ⚡ **静态生成** - 基于 Astro 的静态站点生成，加载速度快
 
-## 🚀 技术栈
-
-- **框架**: [Astro](https://astro.build/) - 现代化的静态站点生成器
-- **样式**: [Tailwind CSS](https://tailwindcss.com/) - 实用优先的 CSS 框架
-- **内容**: [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/) - 结构化内容管理
-- **Markdown**: [MDX](https://mdxjs.com/) - 支持 JSX 的 Markdown
-- **部署**: [Vercel](https://vercel.com/) - 零配置部署平台
-
-## 📁 项目结构
-
-```
-HealPurr/
-├── public/                 # 静态资源
-│   └── cats/               # 猫咪图片
-├── src/
-│   ├── components/        # 组件
-│   │   ├── Header.astro   # 头部导航
-│   │   ├── CatSelector.astro  # 猫咪选择器
-│   │   └── Timeline.astro # 时间线组件
-│   ├── content/           # 内容集合
-│   │   ├── config.ts      # 内容配置
-│   │   └── cats/          # 猫咪医疗记录
-│   ├── layouts/           # 布局
-│   │   └── RecordLayout.astro  # 记录详情布局
-│   └── pages/             # 页面
-│       ├── index.astro    # 首页
-│       ├── cat/           # 猫咪专属页面
-│       │   ├── orange.astro
-│       │   ├── white.astro
-│       │   └── black.astro
-│       └── records/       # 记录详情页
-│           └── [slug].astro
-├── astro.config.mjs       # Astro 配置
-├── tailwind.config.mjs    # Tailwind 配置
-├── vercel.json            # Vercel 部署配置
-└── package.json           # 项目依赖
-```
-
-## 🛠️ 本地开发
+## �️ 本地开发
 
 ### 环境要求
 
 - Node.js 18.0 或更高版本
-- npm 或 yarn
-- VSCode（推荐）- 需要安装 Astro 扩展
-
-### VSCode 扩展
-
-项目已包含推荐的 VSCode 扩展配置，打开项目后会自动提示安装以下扩展：
-
-- **Astro** - Astro 语言支持
-- **Prettier** - 代码格式化
-- **ESLint** - 代码检查
-- **Tailwind CSS IntelliSense** - Tailwind CSS 智能提示
 
 ### 安装依赖
 
 ```bash
 npm install
 ```
-
-**重要**：安装依赖后，必须执行以下步骤来解决 TypeScript 错误：
-
-1. **重启 VSCode**：
-   - 按 `Ctrl+Shift+P`（Windows/Linux）或 `Cmd+Shift+P`（Mac）
-   - 输入 "Developer: Reload Window" 并回车
-
-2. **如果仍有错误**，尝试：
-   - 删除 `node_modules` 和 `package-lock.json`
-   - 重新运行 `npm install`
-   - 再次重启 VSCode
-
-3. **确保已安装 Astro 扩展**：
-   - 在 VSCode 中打开扩展面板（Ctrl+Shift+X）
-   - 搜索并安装 "Astro" 扩展（由 Astro Team 提供）
 
 ### 启动开发服务器
 
@@ -98,49 +31,51 @@ npm run dev
 
 访问 [http://localhost:4321](http://localhost:4321) 查看网站。
 
-### 构建生产版本
-
-```bash
-npm run build
-```
-
-构建后的文件将输出到 `dist` 目录。
-
-### 预览生产版本
-
-```bash
-npm run preview
-```
-
 ## 📝 添加医疗记录
 
 医疗记录使用 Markdown 格式存储在 `src/content/cats/` 目录下。
 
 ### 文件命名规范
 
-```
-{猫咪id}-{日期}-{类型}.md
-```
+**格式**：`{猫咪id}-{日期}-{类型}.md`
 
-例如：
+**命名规则**：
 
-- `orange-2024-01-15-vaccine.md` - 小橘的疫苗记录
-- `white-2024-01-10-surgery.md` - 小白的手术记录
-- `black-2023-12-20-checkup.md` - 小黑的体检记录
+- **猫咪 ID**：必须是 `tortoiseshell`、`cow` 或 `tabby` 之一
+- **日期**：使用 YYYY-MM-DD 格式（例如：2024-01-15）
+- **类型**：使用英文或拼音，建议使用以下类型之一：
+  - `vaccine` - 疫苗
+  - `surgery` - 手术
+  - `checkup` - 体检
+  - `treatment` - 治疗
+  - `followup` - 复查
+
+**示例**：
+
+- `tortoiseshell-2024-01-10-surgery.md` - 米儿的手术记录
+- `cow-2023-12-20-checkup.md` - 样儿的体检记录
+- `tabby-2024-01-15-vaccine.md` - 九儿的疫苗记录
+
+**注意事项**：
+
+- 文件名必须使用小写字母
+- 日期必须使用连字符分隔
+- 文件名会自动成为 URL 路径（slug），所以建议保持简洁和可读性
+- 虽然文件名格式不是硬性要求，但强烈建议遵循此格式以保持一致性
 
 ### 记录模板
 
 ```markdown
 ---
-cat: orange | white | black
-catName: 猫咪名字
-title: 记录标题
-date: YYYY-MM-DD
-type: 疫苗 | 手术 | 体检 | 治疗 | 复查
-doctor: 医生名字（可选）
-weight: 体重（可选）
-temperature: 体温（可选）
-tags: [标签1, 标签2]（可选）
+cat: tortoiseshell | cow | tabby # 猫咪 ID（必填）
+catName: 猫咪名字 # 猫咪名称（必填）
+title: 记录标题 # 记录标题（必填）
+date: YYYY-MM-DD # 就诊日期（必填，必须是 Date 类型）
+type: 疫苗 | 手术 | 体检 | 治疗 | 复查 # 记录类型（必填）
+doctor: 医生名字 # 医生名字（可选）
+weight: 体重 # 体重（可选，例如：5.2kg）
+temperature: 体温 # 体温（可选，例如：38.3°C）
+tags: [标签1, 标签2] # 标签数组（可选）
 ---
 
 这里是详细的记录内容，使用 Markdown 格式编写。
@@ -162,70 +97,107 @@ tags: [标签1, 标签2]（可选）
 ...
 ```
 
-## 🌐 部署到 Vercel
+## 📷 图片存放规则
 
-### 自动部署
+医疗记录中可能包含各种检查报告、X 光片、B 超图片等，这些图片应统一存放在 `public/medical/` 目录下。
 
-1. 将代码推送到 GitHub
-2. 在 Vercel 中导入项目
-3. Vercel 会自动检测 Astro 项目并部署
+### 目录结构
 
-### 手动配置
+```
+public/
+└── medical/               # 医疗记录图片根目录
+    ├── reports/           # 检查报告
+    ├── xray/              # X 光片
+    ├── ultrasound/         # B 超图片
+    ├── blood/             # 血液检查
+    └── others/            # 其他（药物、食品等）
+```
 
-项目已包含 `vercel.json` 配置文件，支持：
+### 分类说明
 
-- 自动构建和部署
-- 香港区域部署（hkg1）
-- 静态站点输出
+| 目录          | 用途                 | 示例文件名                                |
+| ------------- | -------------------- | ----------------------------------------- |
+| `reports/`    | 各类检查报告         | `tortoiseshell-2024-01-15-report.pdf`     |
+| `xray/`       | X 光片               | `cow-2023-12-20-xray.jpg`                 |
+| `ultrasound/` | B 超图片             | `tabby-2024-01-10-ultrasound.jpg`         |
+| `blood/`      | 血液检查报告         | `tortoiseshell-2024-01-15-blood-test.jpg` |
+| `others/`     | 其他（药物、食品等） | `medicine-2024-01-15.jpg`                 |
 
-### 环境变量（可选）
+### 图片命名规范
 
-如果需要自定义域名或其他配置，可以在 Vercel 项目设置中添加环境变量。
+建议使用以下格式命名图片文件：
+
+```
+{猫咪id}-{日期}-{类型}.{扩展名}
+```
+
+**示例**：
+
+- `tortoiseshell-2024-01-15-blood-test.jpg` - 米儿的血常规报告
+- `cow-2023-12-20-xray.jpg` - 样儿的 X 光片
+- `tabby-2024-01-10-ultrasound.jpg` - 九儿的 B 超图片
+
+### 在 Markdown 中引用图片
+
+在医疗记录的 Markdown 文件中，使用绝对路径引用图片：
+
+```markdown
+## 血液检查
+
+![血常规报告](/medical/blood/tortoiseshell-2024-01-15-blood-test.jpg)
+
+### 生化指标
+
+![生化报告](/medical/blood/tortoiseshell-2024-01-15-biochemistry.jpg)
+
+## 影像检查
+
+![X 光片](/medical/xray/cow-2023-12-20-xray.jpg)
+
+![B 超图片](/medical/ultrasound/tabby-2024-01-10-ultrasound.jpg)
+```
+
+**注意事项**：
+
+- 图片路径必须以 `/medical/` 开头
+- 建议使用 `.jpg`、`.png` 或 `.webp` 格式
+- 图片文件名建议与对应的 MD 文件名保持一致的命名规则
+- 大文件（如 PDF 报告）也可以存放在对应目录中
+
+**字段说明**：
+
+| 字段          | 类型     | 必填 | 说明                                             |
+| ------------- | -------- | ---- | ------------------------------------------------ |
+| `cat`         | enum     | ✅   | 猫咪 ID，必须是 tortoiseshell、cow 或 tabby 之一 |
+| `catName`     | string   | ✅   | 猫咪的名称                                       |
+| `title`       | string   | ✅   | 记录的标题                                       |
+| `date`        | Date     | ✅   | 就诊日期，格式为 YYYY-MM-DD                      |
+| `type`        | string   | ✅   | 记录类型（疫苗、手术、体检、治疗、复查等）       |
+| `doctor`      | string   | ❌   | 接诊医生的名字                                   |
+| `weight`      | string   | ❌   | 猫咪的体重（例如：5.2kg）                        |
+| `temperature` | string   | ❌   | 猫咪的体温（例如：38.3°C）                       |
+| `tags`        | string[] | ❌   | 标签数组，用于分类和搜索                         |
 
 ## 🐾 猫咪信息
 
 当前项目记录了以下猫咪的健康档案：
 
-| 猫咪 | ID     | 颜色 | Emoji |
-| ---- | ------ | ---- | ----- |
-| 小橘 | orange | 橘色 | 🐱    |
-| 小白 | white  | 白色 | 🐈    |
-| 小黑 | black  | 黑色 | 🐈‍⬛    |
+| 猫咪 | ID            | 颜色 | 品种图标          |
+| ---- | ------------- | ---- | ----------------- |
+| 米儿 | tortoiseshell | 橘色 | Tortoiseshell.svg |
+| 样儿 | cow           | 黑白 | Cow.svg           |
+| 九儿 | tabby         | 虎纹 | Tabby.svg         |
 
-## 🎨 自定义主题
+**图标说明**：
 
-### 修改颜色
+- 品种图标存放在 `public/cats/` 目录下
+- 使用 SVG 格式，保证清晰度和可缩放性
+- 在页面中通过 `src/config/cats.ts` 配置文件引用
 
-在 `tailwind.config.mjs` 中修改主题颜色：
+**修改猫咪信息**：
 
-```javascript
-export default {
-  theme: {
-    extend: {
-      colors: {
-        // 自定义颜色
-      },
-    },
-  },
-};
-```
-
-### 修改猫咪信息
-
-在以下文件中修改猫咪信息：
-
-- `src/components/Header.astro` - 导航栏
-- `src/components/CatSelector.astro` - 选择器
-- `src/components/Timeline.astro` - 时间线
+- 直接在 `src/config/cats.ts` 中修改对应的字段即可
 
 ## 📄 许可证
 
 本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
-
-## 🙏 致谢
-
-感谢所有为猫咪健康付出的兽医和宠物医院工作人员！
-
----
-
-**HealPurr** - 用心记录每一份健康 🐾

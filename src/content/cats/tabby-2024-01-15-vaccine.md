@@ -1,6 +1,6 @@
 ---
-cat: orange
-catName: 小橘
+cat: tabby
+catName: 九儿
 title: 年度疫苗接种
 date: 2024-01-15
 type: 疫苗

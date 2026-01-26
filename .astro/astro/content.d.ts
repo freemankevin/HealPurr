@@ -151,23 +151,23 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"cats": {
-"black-2023-12-20-checkup.md": {
-	id: "black-2023-12-20-checkup.md";
-  slug: "black-2023-12-20-checkup";
+"cow-2023-12-20-checkup.md": {
+	id: "cow-2023-12-20-checkup.md";
+  slug: "cow-2023-12-20-checkup";
   body: string;
   collection: "cats";
   data: InferEntrySchema<"cats">
 } & { render(): Render[".md"] };
-"orange-2024-01-15-vaccine.md": {
-	id: "orange-2024-01-15-vaccine.md";
-  slug: "orange-2024-01-15-vaccine";
+"tabby-2024-01-15-vaccine.md": {
+	id: "tabby-2024-01-15-vaccine.md";
+  slug: "tabby-2024-01-15-vaccine";
   body: string;
   collection: "cats";
   data: InferEntrySchema<"cats">
 } & { render(): Render[".md"] };
-"white-2024-01-10-surgery.md": {
-	id: "white-2024-01-10-surgery.md";
-  slug: "white-2024-01-10-surgery";
+"tortoiseshell-2024-01-10-surgery.md": {
+	id: "tortoiseshell-2024-01-10-surgery.md";
+  slug: "tortoiseshell-2024-01-10-surgery";
   body: string;
   collection: "cats";
   data: InferEntrySchema<"cats">
