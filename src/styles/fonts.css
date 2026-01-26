@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&family=Comic+Neue:wght@400;700&family=Patrick+Hand&family=Varela+Round&family=Baloo+2:wght@400;500;600;700;800&family=Kalam:wght@300;400;700&family=ZCOOL+QingKe+HuangYou&family=Ma+Shan+Zheng&display=swap');
+
+/* 
+ * 全局字体配置 - 卡通手写风格
+ *
+ * font-cute: 主要的卡通可爱字体
+ * font-cute-light: 轻量手写字体
+ * font-cute-bold: 粗体卡通字体
+ * font-cute-number: 专用数字字体
+ */
+
+/* 主要卡通字体 - 覆盖所有文本 */
+.font-cute {
+  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Poppins', 'Rubik', 'Fredoka', 'Comic Neue', 'Varela Round', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Ma Shan Zheng', cursive, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* 轻量手写字体 - 用于副标题和描述 */
+.font-cute-light {
+  font-family: 'Patrick Hand', 'Kalam', 'Comic Neue', 'Ma Shan Zheng', cursive, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* 粗体卡通字体 - 用于标题 */
+.font-cute-bold {
+  font-family: 'Outfit', 'Space Grotesk', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* 数字专用字体 - 用于日期、数据等 */
+.font-cute-number {
+  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Varela Round', sans-serif;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+/* 全局默认字体 - 应用到所有元素 */
+* {
+  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Poppins', 'Rubik', 'Fredoka', 'Comic Neue', 'Varela Round', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Ma Shan Zheng', cursive, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* 特定元素字体优化 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Space Grotesk', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+p, span, div, a, li, td, th {
+  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Poppins', 'Rubik', 'Fredoka', 'Comic Neue', 'Varela Round', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Ma Shan Zheng', cursive, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* 数字优化 */
+.number-cute {
+  font-family: 'Outfit', 'Space Grotesk', 'Quicksand', 'Nunito', 'Varela Round', sans-serif;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+/* 字体平滑渲染 */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}

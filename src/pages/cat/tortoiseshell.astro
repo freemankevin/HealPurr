@@ -23,7 +23,8 @@ const sortedRecords = allRecords.sort((a, b) =>
   <title>米儿的健康档案 - HealPurr</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+KuaiLe&family=Long+Cang&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&family=Varela+Round&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Baloo+2:wght@400;500;600;700;800&family=Kalam:wght@300;400;700&family=ZCOOL+QingKe+HuangYou&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/fonts.css" is:inline>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
   <Header />
@@ -37,7 +38,7 @@ const sortedRecords = allRecords.sort((a, b) =>
         </div>
         <span class="bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">{cat.name}的健康档案</span>
       </h1>
-      <p class="text-xl text-gray-400 font-cute-light">共 {sortedRecords.length} 条医疗记录 🐾</p>
+      <p class="text-xl text-gray-400 font-cute-light">共 <span class="font-cute-number">{sortedRecords.length}</span> 条医疗记录 🐾</p>
     </div>
 
     <CatSelector activeCat={catId} />
@@ -48,13 +49,3 @@ const sortedRecords = allRecords.sort((a, b) =>
   <Footer />
 </body>
 </html>
-
-<style>
-  .font-cute {
-    font-family: 'ZCOOL KuaiLe', 'Long Cang', 'Noto Sans SC', cursive;
-  }
-  
-  .font-cute-light {
-    font-family: 'Long Cang', 'Noto Sans SC', cursive;
-  }
-</style>

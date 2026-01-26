@@ -6,26 +6,26 @@ const { activeCat } = Astro.props;
 
 <div class="flex gap-4 mb-12 flex-wrap justify-center">
   {cats.map(cat => (
-    <a 
+    <a
       href={`/cat/${cat.id}`}
       class={`px-6 py-3 bg-gradient-to-br from-slate-800 to-slate-800/50 rounded-xl border transition-all duration-300 backdrop-blur-sm ${
-        activeCat === cat.id 
-          ? 'border-purple-400 bg-purple-900/40 shadow-lg shadow-purple-500/30 scale-105' 
+        activeCat === cat.id
+          ? 'border-purple-400 bg-purple-900/40 shadow-lg shadow-purple-500/30 scale-105'
           : `border-purple-500/20 hover:border-purple-400/50 hover:bg-purple-900/20 hover:shadow-md hover:shadow-purple-500/20 hover:-translate-y-0.5 ${cat.color}`
       }`}
     >
       <img src={cat.svg} alt={cat.name} class="w-7 h-7 mr-2 inline-block drop-shadow-md" />
-      <span class="text-base text-white font-medium">{cat.name}</span>
+      <span class="text-base text-white font-medium font-cute">{cat.name}</span>
     </a>
   ))}
-  <a 
+  <a
     href="/"
     class={`px-6 py-3 bg-gradient-to-br from-slate-800 to-slate-800/50 rounded-xl border transition-all duration-300 backdrop-blur-sm ${
-      !activeCat 
-        ? 'border-purple-400 bg-purple-900/40 shadow-lg shadow-purple-500/30 scale-105' 
+      !activeCat
+        ? 'border-purple-400 bg-purple-900/40 shadow-lg shadow-purple-500/30 scale-105'
         : 'border-purple-500/20 hover:border-purple-400/50 hover:bg-purple-900/20 hover:shadow-md hover:shadow-purple-500/20 hover:-translate-y-0.5'
     }`}
   >
-    <span class="text-base text-white font-medium">全部</span>
+    <span class="text-base text-white font-medium font-cute">全部</span>
   </a>
 </div>
