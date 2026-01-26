@@ -6,16 +6,8 @@
 
 /* === 本地字体声明 === */
 @font-face {
-  font-family: 'Righteous';
-  src: url('/fonts/Righteous.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Pacifico';
-  src: url('/fonts/Pacifico.woff2') format('woff2');
+  src: url('/fonts/Pacifico/Pacifico-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -23,53 +15,118 @@
 
 @font-face {
   font-family: 'Caveat';
-  src: url('/fonts/Caveat.woff2') format('woff2');
+  src: url('/fonts/Caveat/static/Caveat-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Shadows Into Light';
-  src: url('/fonts/ShadowsIntoLight.woff2') format('woff2');
+  font-family: 'Caveat';
+  src: url('/fonts/Caveat/static/Caveat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/Caveat/static/Caveat-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/Caveat/static/Caveat-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('/fonts/Dancing_Script/static/DancingScript-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Indie Flower';
-  src: url('/fonts/IndieFlower.woff2') format('woff2');
+  font-family: 'Dancing Script';
+  src: url('/fonts/Dancing_Script/static/DancingScript-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('/fonts/Dancing_Script/static/DancingScript-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('/fonts/Dancing_Script/static/DancingScript-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ma Shan Zheng';
+  src: url('/fonts/Ma_Shan_Zheng/MaShanZheng-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Amatic SC';
-  src: url('/fonts/AmaticSC.woff2') format('woff2');
+  font-family: 'Noto Sans SC';
+  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Alex Brush';
-  src: url('/fonts/AlexBrush.woff2') format('woff2');
-  font-weight: 400;
+  font-family: 'Noto Sans SC';
+  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 /* === 核心字体变量 === */
 :root {
-  --font-display: 'Righteous', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', 'Nunito', 'Varela Round', cursive, 'Microsoft YaHei', sans-serif;
-  --font-script: 'Pacifico', 'Alex Brush', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
-  --font-handwrite: 'Caveat', 'Kalam', 'Patrick Hand', 'Comic Neue', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
-  --font-casual: 'Shadows Into Light', 'Kalam', 'Comic Neue', cursive, 'FangSong', '仿宋', 'STFangsong', '华文仿宋', sans-serif;
-  --font-playful: 'Indie Flower', 'Kalam', 'Comic Neue', 'Fredoka', cursive, 'Microsoft YaHei', sans-serif;
-  --font-sketch: 'Amatic SC', 'Fredoka', 'Baloo 2', 'ZCOOL QingKe HuangYou', cursive, 'Microsoft YaHei', sans-serif;
-  --font-alex-brush: 'Alex Brush', 'Pacifico', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
+  --font-display: 'Ma Shan Zheng', 'Dancing Script', 'Pacifico', 'Noto Sans SC', cursive, 'Microsoft YaHei', sans-serif;
+  --font-script: 'Pacifico', 'Dancing Script', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
+  --font-handwrite: 'Caveat', 'Dancing Script', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
+  --font-casual: 'Dancing Script', 'Caveat', cursive, 'FangSong', '仿宋', 'STFangsong', '华文仿宋', sans-serif;
+  --font-playful: 'Caveat', 'Dancing Script', 'Noto Sans SC', cursive, 'Microsoft YaHei', sans-serif;
+  --font-sketch: 'Ma Shan Zheng', 'Dancing Script', 'Pacifico', cursive, 'Microsoft YaHei', sans-serif;
+  --font-alex-brush: 'Pacifico', 'Dancing Script', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
+  --font-body: 'Noto Sans SC', 'Caveat', 'Microsoft YaHei', sans-serif;
 }
 
 /* === 全局重置 - 打造呼吸感 === */
