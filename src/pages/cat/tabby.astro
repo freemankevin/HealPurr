@@ -13,6 +13,9 @@ const allRecords = await getCollection('cats', ({ data }) => data.cat === catId)
 const sortedRecords = allRecords.sort((a, b) =>
   b.data.date.getTime() - a.data.date.getTime()
 );
+
+// 获取所有记录用于搜索
+const allRecordsForSearch = await getCollection('cats');
 ---
 
 <!DOCTYPE html>
@@ -26,7 +29,7 @@ const sortedRecords = allRecords.sort((a, b) =>
   <link rel="stylesheet" href="/src/styles/fonts.css" is:inline>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
-  <Header />
+  <Header records={allRecordsForSearch} />
 
   <main class="max-w-6xl mx-auto px-8 py-16">
     <div class="mb-16">

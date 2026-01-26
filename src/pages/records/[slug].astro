@@ -15,6 +15,9 @@ export async function getStaticPaths() {
 const { record } = Astro.props;
 const { Content } = await record.render();
 
+// 获取所有记录用于搜索
+const allRecordsForSearch = await getCollection('cats');
+
 // 格式化日期为 YYYY-MM-DD
 const formatDate = (date: Date) => {
   const year = date.getFullYear();
@@ -35,7 +38,7 @@ const formatDate = (date: Date) => {
   <link rel="stylesheet" href="/src/styles/fonts.css" is:inline>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
-  <Header />
+  <Header records={allRecordsForSearch} />
   
   <main class="max-w-4xl mx-auto px-8 py-16">
     <a href="/" class="text-purple-400 hover:text-purple-300 mb-8 inline-flex items-center gap-2 text-lg transition-colors font-cute">

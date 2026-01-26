@@ -1,0 +1,181 @@
+---
+const { records = [] } = Astro.props;
+---
+
+<div id="search-container" class="relative">
+  <div class="relative">
+    <input
+      type="text"
+      id="search-input"
+      placeholder="搜索药品、食品、检查、症状..."
+      class="w-64 md:w-80 px-4 py-2 pl-10 bg-slate-700/50 border border-purple-400/30 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all duration-300 backdrop-blur-sm"
+    />
+    <svg
+      class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-purple-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  </div>
+  
+  <div
+    id="search-results"
+    class="absolute top-full left-0 right-0 mt-2 bg-slate-800/95 border border-purple-400/30 rounded-xl shadow-xl shadow-purple-500/20 backdrop-blur-xl max-h-96 overflow-y-auto hidden z-50"
+  >
+    <div id="search-loading" class="hidden p-4 text-center text-gray-400">
+      <div class="inline-block animate-spin rounded-full h-6 w-6 border-2 border-purple-400 border-t-transparent"></div>
+      <span class="ml-2">搜索中...</span>
+    </div>
+    <div id="search-empty" class="hidden p-4 text-center text-gray-400">
+      未找到相关记录
+    </div>
+    <div id="search-results-list" class="py-2"></div>
+  </div>
+</div>
+
+<script define:vars={{ records }}>
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const searchLoading = document.getElementById('search-loading');
+  const searchEmpty = document.getElementById('search-empty');
+  const searchResultsList = document.getElementById('search-results-list');
+
+  let searchTimeout;
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    
+    clearTimeout(searchTimeout);
+    
+    if (query.length < 1) {
+      searchResults.classList.add('hidden');
+      return;
+    }
+    
+    searchResults.classList.remove('hidden');
+    searchLoading.classList.remove('hidden');
+    searchEmpty.classList.add('hidden');
+    searchResultsList.innerHTML = '';
+    
+    searchTimeout = setTimeout(() => {
+      const results = searchRecords(query);
+      displayResults(results);
+    }, 300);
+  });
+
+  function searchRecords(query) {
+    return records
+      .map(record => {
+        const content = record.body.toLowerCase();
+        const title = record.data.title.toLowerCase();
+        const type = record.data.type.toLowerCase();
+        const tags = (record.data.tags || []).join(' ').toLowerCase();
+        const doctor = (record.data.doctor || '').toLowerCase();
+        
+        const titleMatch = title.includes(query);
+        const typeMatch = type.includes(query);
+        const tagsMatch = tags.includes(query);
+        const doctorMatch = doctor.includes(query);
+        const contentMatch = content.includes(query);
+        
+        // 提取匹配的上下文
+        let matchedContent = '';
+        if (contentMatch) {
+          const sentences = content.split(/[。！？\n]/);
+          const matchedSentence = sentences.find(s => s.includes(query));
+          if (matchedSentence) {
+            const index = matchedSentence.indexOf(query);
+            const start = Math.max(0, index - 20);
+            const end = Math.min(matchedSentence.length, index + query.length + 20);
+            matchedContent = '...' + matchedSentence.substring(start, end) + '...';
+          }
+        }
+        
+        return {
+          ...record,
+          score: (titleMatch ? 3 : 0) + (typeMatch ? 2 : 0) + (tagsMatch ? 2 : 0) + (doctorMatch ? 1 : 0) + (contentMatch ? 1 : 0),
+          matchedContent,
+          matchType: titleMatch ? 'title' : typeMatch ? 'type' : tagsMatch ? 'tags' : doctorMatch ? 'doctor' : 'content'
+        };
+      })
+      .filter(record => record.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10);
+  }
+
+  function displayResults(results) {
+    searchLoading.classList.add('hidden');
+    
+    if (results.length === 0) {
+      searchEmpty.classList.remove('hidden');
+      return;
+    }
+    
+    searchEmpty.classList.add('hidden');
+    
+    results.forEach(result => {
+      const resultItem = document.createElement('div');
+      resultItem.className = 'px-4 py-3 hover:bg-purple-900/30 cursor-pointer transition-colors duration-200 border-b border-purple-400/10 last:border-b-0';
+      
+      const matchTypeLabels = {
+        title: '标题',
+        type: '类型',
+        tags: '标签',
+        doctor: '医生',
+        content: '内容'
+      };
+      
+      const date = new Date(result.data.date).toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      
+      resultItem.innerHTML = `
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded-full">${result.data.type}</span>
+              <span class="text-xs text-gray-400">${date}</span>
+            </div>
+            <h4 class="font-medium text-white mb-1 truncate">${result.data.title}</h4>
+            <p class="text-sm text-gray-400 mb-1">${result.data.catName}</p>
+            ${result.matchedContent ? `<p class="text-xs text-gray-500 line-clamp-2">${result.matchedContent}</p>` : ''}
+          </div>
+          <span class="text-xs px-2 py-1 bg-pink-500/20 text-pink-300 rounded-full whitespace-nowrap">
+            匹配: ${matchTypeLabels[result.matchType]}
+          </span>
+        </div>
+      `;
+      
+      resultItem.addEventListener('click', () => {
+        window.location.href = `/records/${result.slug}`;
+      });
+      
+      searchResultsList.appendChild(resultItem);
+    });
+  }
+
+  // 点击外部关闭搜索结果
+  document.addEventListener('click', (e) => {
+    const container = document.getElementById('search-container');
+    if (!container.contains(e.target)) {
+      searchResults.classList.add('hidden');
+    }
+  });
+
+  // ESC 键关闭搜索结果
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchResults.classList.add('hidden');
+      searchInput.blur();
+    }
+  });
+</script>
