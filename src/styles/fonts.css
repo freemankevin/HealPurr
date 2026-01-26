@@ -2,17 +2,11 @@
  * 🌸 梦幻治愈系字体配置 🌸
  *
  * 设计理念：像在日记本上涂鸦，随性、温暖、充满生命力
+ *
+ * 中文字体：统一使用 Ma Shan Zheng
  */
 
 /* === 本地字体声明 === */
-@font-face {
-  font-family: 'Pacifico';
-  src: url('/fonts/Pacifico/Pacifico-Regular.ttf?v=20250126') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 @font-face {
   font-family: 'Caveat';
   src: url('/fonts/Caveat/static/Caveat-Regular.ttf?v=20250126') format('truetype');
@@ -85,48 +79,16 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Noto Sans SC';
-  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-Regular.ttf?v=20250126') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Noto Sans SC';
-  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-Medium.ttf?v=20250126') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Noto Sans SC';
-  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-SemiBold.ttf?v=20250126') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Noto Sans SC';
-  src: url('/fonts/Noto_Sans_SC/static/NotoSansSC-Bold.ttf?v=20250126') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* === 核心字体变量 === */
 :root {
-  --font-display: 'Ma Shan Zheng', 'Dancing Script', 'Pacifico', 'Noto Sans SC', cursive, 'Microsoft YaHei', sans-serif;
-  --font-script: 'Pacifico', 'Dancing Script', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
-  --font-handwrite: 'Caveat', 'Dancing Script', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
-  --font-casual: 'Dancing Script', 'Caveat', cursive, 'FangSong', '仿宋', 'STFangsong', '华文仿宋', sans-serif;
-  --font-playful: 'Caveat', 'Dancing Script', 'Noto Sans SC', cursive, 'Microsoft YaHei', sans-serif;
-  --font-sketch: 'Ma Shan Zheng', 'Dancing Script', 'Pacifico', cursive, 'Microsoft YaHei', sans-serif;
-  --font-alex-brush: 'Pacifico', 'Dancing Script', 'Ma Shan Zheng', cursive, 'KaiTi', '楷体', 'STKaiti', '华文楷体', sans-serif;
-  --font-body: 'Noto Sans SC', 'Caveat', 'Microsoft YaHei', sans-serif;
+  --font-display: 'Ma Shan Zheng', 'Dancing Script', cursive, 'Microsoft YaHei', sans-serif;
+  --font-script: 'Ma Shan Zheng', 'Dancing Script', cursive, 'Microsoft YaHei', sans-serif;
+  --font-handwrite: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
+  --font-casual: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
+  --font-playful: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
+  --font-sketch: 'Ma Shan Zheng', 'Caveat', cursive, 'Microsoft YaHei', sans-serif;
+  --font-alex-brush: 'Ma Shan Zheng', 'Dancing Script', cursive, 'Microsoft YaHei', sans-serif;
+  --font-body: 'Ma Shan Zheng', 'Caveat', 'Microsoft YaHei', sans-serif;
 }
 
 /* === 全局重置 - 打造呼吸感 === */
@@ -215,9 +177,8 @@ p {
 }
 
 .font-cute-number {
-  font-family: var(--font-display);
+  font-family: 'Ma Shan Zheng', cursive, 'Microsoft YaHei', sans-serif;
   font-weight: 400;
-  font-variant-numeric: tabular-nums;
   font-size: 1.15em;
 }
 
@@ -312,9 +273,8 @@ div {
 }
 
 .number-cute {
-  font-family: var(--font-display);
+  font-family: 'Ma Shan Zheng', cursive, 'Microsoft YaHei', sans-serif;
   font-weight: 400;
-  font-variant-numeric: tabular-nums;
 }
 
 .badge, .tag {
