@@ -134,7 +134,8 @@
   width: 100%;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   overflow: hidden;
   border-radius: 0.5rem;
   box-shadow:
@@ -157,6 +158,7 @@
   font-size: 0.95rem;
   color: #e9d5ff;
   border-bottom: 2px solid rgba(168, 85, 247, 0.3);
+  white-space: nowrap;
 }
 
 .prose tbody tr {
@@ -176,6 +178,7 @@
   padding: 0.875rem 1rem;
   font-size: 0.95rem;
   color: #cbd5e1;
+  word-wrap: break-word;
 }
 
 /* === 引用块样式 === */
@@ -224,11 +227,19 @@
   color: #cbd5e1;
 }
 
+.prose .markdown-alert p:first-child {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .prose .markdown-alert p:first-child strong {
   font-weight: 600;
   font-size: 1rem;
-  display: block;
-  margin-bottom: 0.5rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 /* NOTE - 注意（蓝色） */
@@ -550,6 +561,7 @@ html:not(.dark) .prose thead {
 html:not(.dark) .prose th {
   color: #7c3aed;
   border-bottom: 2px solid rgba(124, 58, 237, 0.3);
+  white-space: nowrap;
 }
 
 html:not(.dark) .prose tbody tr {
