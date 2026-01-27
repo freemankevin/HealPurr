@@ -3,7 +3,7 @@ cat: tabby
 catName: 九儿
 title: 年度疫苗接种
 date: 2024-01-15
-type: 疫苗
+type: 年度疫苗
 doctor: 李医生
 weight: 4.5kg
 tags: ['疫苗', '猫三联', '预防']

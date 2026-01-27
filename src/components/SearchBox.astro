@@ -7,11 +7,12 @@ const { records = [] } = Astro.props;
     <input
       type="text"
       id="search-input"
-      placeholder="搜索药品、食品、检查、症状..."
-      class="w-72 md:w-96 px-4 py-1.5 pl-10 h-9 bg-slate-700/50 border border-purple-400/30 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all duration-300 backdrop-blur-sm text-sm"
+      placeholder="搜索..."
+      class="search-input w-40 px-4 py-1.5 pl-10 h-9 bg-slate-700/50 border border-purple-400/30 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all duration-300 backdrop-blur-sm text-sm dark:bg-slate-700/50 dark:border-purple-400/30 dark:text-white dark:placeholder-gray-400 dark:focus:ring-purple-400/50 dark:focus:border-purple-400/50 light:bg-white/50 light:border-purple-600/30 light:text-gray-800 light:placeholder-gray-500 light:focus:ring-purple-600/50 light:focus:border-purple-600/50"
+      style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
     />
     <svg
-      class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-purple-400"
+      class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-purple-400 transition-opacity duration-300 dark:text-purple-400 light:text-purple-600"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -27,13 +28,14 @@ const { records = [] } = Astro.props;
   
   <div
     id="search-results"
-    class="absolute top-full left-0 right-0 mt-2 bg-slate-800/95 border border-purple-400/30 rounded-xl shadow-xl shadow-purple-500/20 backdrop-blur-xl max-h-96 overflow-y-auto hidden z-50"
+    class="absolute top-full left-0 right-0 mt-2 bg-slate-800/95 border border-purple-400/30 rounded-xl shadow-xl shadow-purple-500/20 backdrop-blur-xl max-h-96 overflow-y-auto hidden z-50 dark:bg-slate-800/95 dark:border-purple-400/30 dark:shadow-purple-500/20 light:bg-white/95 light:border-purple-600/30 light:shadow-purple-600/20"
+    style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);"
   >
-    <div id="search-loading" class="hidden p-4 text-center text-gray-400">
-      <div class="inline-block animate-spin rounded-full h-6 w-6 border-2 border-purple-400 border-t-transparent"></div>
+    <div id="search-loading" class="hidden p-4 text-center text-gray-400 dark:text-gray-400 light:text-gray-500">
+      <div class="inline-block animate-spin rounded-full h-6 w-6 border-2 border-purple-400 dark:border-purple-400 light:border-purple-600 border-t-transparent"></div>
       <span class="ml-2">搜索中...</span>
     </div>
-    <div id="search-empty" class="hidden p-4 text-center text-gray-400">
+    <div id="search-empty" class="hidden p-4 text-center text-gray-400 dark:text-gray-400 light:text-gray-500">
       未找到相关记录
     </div>
     <div id="search-results-list" class="py-2"></div>
@@ -48,6 +50,22 @@ const { records = [] } = Astro.props;
   const searchResultsList = document.getElementById('search-results-list');
 
   let searchTimeout;
+
+  // 搜索框宽窄切换
+  searchInput.addEventListener('focus', () => {
+    searchInput.classList.remove('w-40');
+    searchInput.classList.add('w-72', 'md:w-96');
+    searchInput.placeholder = '搜索药品、食品、检查、症状...';
+  });
+
+  searchInput.addEventListener('blur', () => {
+    // 如果有搜索结果，不缩小
+    if (searchInput.value.trim() === '') {
+      searchInput.classList.remove('w-72', 'md:w-96');
+      searchInput.classList.add('w-40');
+      searchInput.placeholder = '搜索...';
+    }
+  });
 
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.trim().toLowerCase();
@@ -122,7 +140,7 @@ const { records = [] } = Astro.props;
     
     results.forEach(result => {
       const resultItem = document.createElement('div');
-      resultItem.className = 'px-4 py-3 hover:bg-purple-900/30 cursor-pointer transition-colors duration-200 border-b border-purple-400/10 last:border-b-0';
+      resultItem.className = 'px-4 py-3 hover:bg-purple-900/30 cursor-pointer transition-colors duration-200 border-b border-purple-400/10 last:border-b-0 dark:hover:bg-purple-900/30 dark:border-purple-400/10 light:hover:bg-purple-100/30 light:border-purple-600/10';
       
       const matchTypeLabels = {
         title: '标题',
@@ -142,14 +160,14 @@ const { records = [] } = Astro.props;
         <div class="flex items-start justify-between gap-4">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2 mb-1">
-              <span class="text-xs px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded-full">${result.data.type}</span>
-              <span class="text-xs text-gray-400">${date}</span>
+              <span class="text-xs px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded-full dark:bg-purple-500/20 dark:text-purple-300 light:bg-purple-600/20 light:text-purple-600">${result.data.type}</span>
+              <span class="text-xs text-gray-400 dark:text-gray-400 light:text-gray-500">${date}</span>
             </div>
-            <h4 class="font-medium text-white mb-1 truncate">${result.data.title}</h4>
-            <p class="text-sm text-gray-400 mb-1">${result.data.catName}</p>
-            ${result.matchedContent ? `<p class="text-xs text-gray-500 line-clamp-2">${result.matchedContent}</p>` : ''}
+            <h4 class="font-medium text-white mb-1 truncate dark:text-white light:text-gray-800">${result.data.title}</h4>
+            <p class="text-sm text-gray-400 mb-1 dark:text-gray-400 light:text-gray-600">${result.data.catName}</p>
+            ${result.matchedContent ? `<p class="text-xs text-gray-500 line-clamp-2 dark:text-gray-500 light:text-gray-500">${result.matchedContent}</p>` : ''}
           </div>
-          <span class="text-xs px-2 py-1 bg-pink-500/20 text-pink-300 rounded-full whitespace-nowrap">
+          <span class="text-xs px-2 py-1 bg-pink-500/20 text-pink-300 rounded-full whitespace-nowrap dark:bg-pink-500/20 dark:text-pink-300 light:bg-pink-600/20 light:text-pink-600">
             匹配: ${matchTypeLabels[result.matchType]}
           </span>
         </div>

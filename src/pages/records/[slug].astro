@@ -34,11 +34,12 @@ const formatDate = (date: Date) => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{record.data.title} - HealPurr</title>
   <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/markdown.css">
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
   <Header records={allRecordsForSearch} />
   
-  <main class="max-w-4xl mx-auto px-8 py-16">
+  <main class="max-w-5xl mx-auto px-8 py-16">
     <a href="/" class="text-purple-400 hover:text-purple-300 mb-8 inline-flex items-center gap-2 text-lg transition-colors font-cute">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -78,25 +79,21 @@ const formatDate = (date: Date) => {
 </html>
 
 <style is:global>
-  .prose h2 {
-    @apply text-3xl font-bold mt-10 mb-5 text-purple-300 font-cute-light;
+  /* 覆盖默认的 prose 样式，使用自定义的 markdown.css */
+  .prose {
+    font-family: 'Caveat', 'NotoSerifKhitanSmallScript-Regular', 'Microsoft YaHei', sans-serif;
   }
-  .prose h3 {
-    @apply text-2xl font-semibold mt-8 mb-4 text-purple-200 font-cute-light;
+  
+  /* 确保表格在移动端可以横向滚动 */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .prose p {
-    @apply text-gray-300 leading-relaxed mb-5 text-lg font-cute;
-  }
-  .prose ul, .prose ol {
-    @apply text-gray-300 space-y-3 mb-5 text-lg font-cute;
-  }
-  .prose strong {
-    @apply text-white font-semibold text-purple-200 font-cute-bold;
-  }
-  .prose code {
-    @apply bg-purple-900/40 px-3 py-1.5 rounded-lg text-purple-300 border border-purple-500/30 font-cute;
-  }
-  .prose li {
-    @apply leading-relaxed;
+  
+  /* 优化代码块的可读性 */
+  .prose pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 </style>

@@ -16,12 +16,15 @@ const { title } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} - HealPurr</title>
   <link rel="stylesheet" href="/styles/fonts.css">
+  <link rel="stylesheet" href="/styles/markdown.css">
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
   <Header />
   
   <main class="max-w-4xl mx-auto px-8 py-16">
-    <slot />
+    <div class="prose">
+      <slot />
+    </div>
   </main>
 
   <Footer />

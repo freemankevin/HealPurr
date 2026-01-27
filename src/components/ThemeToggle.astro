@@ -1,0 +1,114 @@
+---
+// 明暗模式切换按钮
+---
+
+<button
+  id="theme-toggle"
+  class="relative w-10 h-10 rounded-full bg-slate-700/50 border border-purple-400/30 backdrop-blur-sm text-purple-400 hover:text-purple-300 hover:border-purple-400/50 transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:drop-shadow-purple-400/50 flex items-center justify-center group dark:bg-slate-700/50 dark:border-purple-400/30 dark:text-purple-400 light:bg-white/50 light:border-purple-600/30 light:text-purple-600 light:hover:text-purple-700 light:hover:border-purple-600/50 light:hover:drop-shadow-purple-600/50"
+  aria-label="切换主题"
+  title="切换明暗模式"
+  style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
+>
+  <!-- 太阳图标 (亮色模式) -->
+  <svg
+    id="sun-icon"
+    class="w-5 h-5 absolute transition-all duration-300 opacity-0 scale-75"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+    />
+  </svg>
+  
+  <!-- 月亮图标 (暗色模式) -->
+  <svg
+    id="moon-icon"
+    class="w-5 h-5 absolute transition-all duration-300 opacity-100 scale-100"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+    />
+  </svg>
+  
+  <!-- 玻璃化效果的光晕 -->
+  <div class="absolute inset-0 bg-purple-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</button>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+  const html = document.documentElement;
+
+  // 检查本地存储或系统偏好
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  // 初始化主题
+  function initTheme() {
+    if (savedTheme === 'light' || (!savedTheme && !systemPrefersDark)) {
+      setLightTheme();
+    } else {
+      setDarkTheme();
+    }
+  }
+
+  // 设置亮色主题
+  function setLightTheme() {
+    html.classList.remove('dark');
+    html.classList.add('light');
+    localStorage.setItem('theme', 'light');
+    sunIcon.classList.remove('opacity-0', 'scale-75');
+    sunIcon.classList.add('opacity-100', 'scale-100');
+    moonIcon.classList.remove('opacity-100', 'scale-100');
+    moonIcon.classList.add('opacity-0', 'scale-75');
+  }
+
+  // 设置暗色主题
+  function setDarkTheme() {
+    html.classList.remove('light');
+    html.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+    moonIcon.classList.remove('opacity-0', 'scale-75');
+    moonIcon.classList.add('opacity-100', 'scale-100');
+    sunIcon.classList.remove('opacity-100', 'scale-100');
+    sunIcon.classList.add('opacity-0', 'scale-75');
+  }
+
+  // 切换主题
+  function toggleTheme() {
+    if (html.classList.contains('dark')) {
+      setLightTheme();
+    } else {
+      setDarkTheme();
+    }
+  }
+
+  // 初始化
+  initTheme();
+
+  // 点击切换
+  themeToggle.addEventListener('click', toggleTheme);
+
+  // 监听系统主题变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      if (e.matches) {
+        setDarkTheme();
+      } else {
+        setLightTheme();
+      }
+    }
+  });
+</script>
