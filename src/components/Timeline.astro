@@ -16,36 +16,36 @@
   };
 
   const typeColors: Record<string, string> = {
-    '疫苗': 'bg-blue-900 text-blue-200',
-    '手术': 'bg-red-900 text-red-200',
-    '体检': 'bg-green-900 text-green-200',
-    '治疗': 'bg-yellow-900 text-yellow-200',
-    '复查': 'bg-purple-900 text-purple-200',
+    '疫苗': 'bg-blue-700/20 text-blue-700 dark:bg-blue-900 dark:text-blue-200',
+    '手术': 'bg-red-700/20 text-red-700 dark:bg-red-900 dark:text-red-200',
+    '体检': 'bg-green-700/20 text-green-700 dark:bg-green-900 dark:text-green-200',
+    '治疗': 'bg-yellow-700/20 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-200',
+    '复查': 'bg-purple-700/20 text-purple-700 dark:bg-purple-900 dark:text-purple-200',
   };
   ---
 
   <div class="relative pl-10 space-y-10">
-    <div class="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-400 via-pink-400 to-transparent rounded-full shadow-lg shadow-purple-400/30"></div>
-    
+    <div class="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-700 via-pink-700 to-transparent rounded-full shadow-lg shadow-purple-700/30 dark:from-purple-400 dark:via-pink-400"></div>
+
     {records.map((record) => (
       <div class="relative group">
-        <div class="absolute -left-10 w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full border-4 border-purple-900/80 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-400/50 group-hover:border-purple-700/80 transition-all duration-300 z-10"></div>
-        
+        <div class="absolute -left-10 w-8 h-8 bg-gradient-to-br from-purple-700 to-pink-700 rounded-full border-4 border-stone-300/80 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-700/50 group-hover:border-stone-400/80 transition-all duration-300 z-10 dark:from-purple-400 dark:to-pink-400 dark:border-purple-900/80 dark:group-hover:shadow-purple-400/50 dark:group-hover:border-purple-700/80"></div>
+
         <a href={`/records/${record.slug}`} class="block">
-          <div class="bg-gradient-to-br from-slate-800 to-slate-800/50 rounded-2xl p-6 border border-purple-500/20 hover:border-purple-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 backdrop-blur-sm group-hover:-translate-y-1">
+          <div class="bg-gradient-to-br from-stone-50 to-stone-100/60 rounded-2xl p-6 border border-purple-700/20 hover:border-purple-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-700/20 backdrop-blur-sm group-hover:-translate-y-1 dark:from-slate-800 dark:to-slate-800/50 dark:border-purple-500/20 dark:hover:border-purple-400/50">
             <div class="flex items-center justify-between mb-3">
-              <span class="text-sm text-gray-400 font-medium font-cute-number">{formatDate(record.data.date)}</span>
-              <span class={`text-xs px-3 py-1.5 rounded-full font-medium font-cute ${typeColors[record.data.type] || 'bg-gray-700 text-gray-300'} shadow-sm`}>
+              <span class="text-sm text-stone-600 font-medium font-cute-number dark:text-gray-400">{formatDate(record.data.date)}</span>
+              <span class={`text-xs px-3 py-1.5 rounded-full font-medium font-cute ${typeColors[record.data.type] || 'bg-stone-300 text-stone-700 dark:bg-gray-700 dark:text-gray-300'} shadow-sm`}>
                 {record.data.type}
               </span>
             </div>
 
-            <h3 class="text-xl font-semibold mb-3 text-white flex items-center gap-3 font-cute-light">
+            <h3 class="text-xl font-semibold mb-3 text-stone-900 flex items-center gap-3 font-cute-light dark:text-white">
               <img src={getCatSvg(record.data.cat)} alt={record.data.catName} class="w-6 h-6 drop-shadow-md" />
               {record.data.title}
             </h3>
 
-            <p class="text-gray-400 text-base mb-4 leading-relaxed font-cute">
+            <p class="text-stone-600 text-base mb-4 leading-relaxed font-cute dark:text-gray-400">
               {record.data.catName} 的医疗记录
               {record.data.doctor && ` · 医生：${record.data.doctor}`}
               {record.data.weight && (
@@ -59,7 +59,7 @@
             {record.data.tags && (
               <div class="flex gap-2 flex-wrap">
                 {record.data.tags.map((tag: string) => (
-                  <span class="inline-flex items-center gap-1.5 text-xs text-purple-300 bg-purple-900/40 px-3 py-1.5 rounded-full border border-purple-500/20 font-cute">
+                  <span class="inline-flex items-center gap-1.5 text-xs text-purple-700 bg-purple-200/50 px-3 py-1.5 rounded-full border border-purple-700/20 font-cute dark:text-purple-300 dark:bg-purple-900/40 dark:border-purple-500/20">
                     #{tag}
                   </span>
                 ))}

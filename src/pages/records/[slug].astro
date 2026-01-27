@@ -36,38 +36,38 @@ const formatDate = (date: Date) => {
   <link rel="stylesheet" href="/styles/fonts.css">
   <link rel="stylesheet" href="/styles/markdown.css">
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
+<body class="bg-gradient-to-br from-stone-50 via-purple-100/20 to-stone-50 text-stone-900 min-h-screen dark:from-slate-900 dark:via-purple-950/30 dark:to-slate-900 dark:text-white">
   <Header records={allRecordsForSearch} />
-  
+
   <main class="max-w-5xl mx-auto px-8 py-16">
-    <a href="/" class="text-purple-400 hover:text-purple-300 mb-8 inline-flex items-center gap-2 text-lg transition-colors font-cute">
+    <a href="/" class="text-purple-700 hover:text-purple-600 mb-8 inline-flex items-center gap-2 text-lg transition-colors font-cute dark:text-purple-400 dark:hover:text-purple-300">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
       </svg>
       返回时间线
     </a>
-    
-    <article class="bg-gradient-to-br from-slate-800 to-slate-800/50 rounded-2xl p-10 border border-purple-500/20 backdrop-blur-sm shadow-2xl shadow-purple-500/10">
+
+    <article class="bg-gradient-to-br from-stone-50 to-stone-100/60 rounded-2xl p-10 border border-purple-700/20 backdrop-blur-sm shadow-2xl shadow-purple-700/10 dark:from-slate-800 dark:to-slate-800/50 dark:border-purple-500/20">
       <div class="mb-8">
         <div class="flex items-center gap-4 mb-4">
           <div class="relative">
             <img src={getCatSvg(record.data.cat)} alt={record.data.catName} class="w-12 h-12 drop-shadow-lg" />
-            <div class="absolute inset-0 bg-purple-400/20 rounded-full blur-xl"></div>
+            <div class="absolute inset-0 bg-purple-700/20 rounded-full blur-xl dark:bg-purple-400/20"></div>
           </div>
           <div>
             <h1 class="text-4xl font-bold font-cute">{record.data.title}</h1>
-            <p class="text-gray-400 mt-2 text-lg font-cute-light">{record.data.catName} · <span class="font-cute-number">{formatDate(record.data.date)}</span></p>
+            <p class="text-stone-600 mt-2 text-lg font-cute-light dark:text-gray-400">{record.data.catName} · <span class="font-cute-number">{formatDate(record.data.date)}</span></p>
           </div>
         </div>
 
-        <div class="flex gap-4 text-base text-gray-400 flex-wrap">
-          <span class="bg-purple-900/60 text-purple-200 px-4 py-2 rounded-full border border-purple-500/30 shadow-sm font-cute">{record.data.type}</span>
-          {record.data.doctor && <span class="bg-slate-800 px-4 py-2 rounded-full border border-gray-700 font-cute">医生：{record.data.doctor}</span>}
-          {record.data.weight && <span class="bg-slate-800 px-4 py-2 rounded-full border border-gray-700 font-cute">体重：<span class="font-cute-number">{record.data.weight}</span></span>}
-          {record.data.temperature && <span class="bg-slate-800 px-4 py-2 rounded-full border border-gray-700 font-cute">体温：<span class="font-cute-number">{record.data.temperature}</span></span>}
+        <div class="flex gap-4 text-base text-stone-600 flex-wrap dark:text-gray-400">
+          <span class="bg-purple-700/20 text-purple-700 px-4 py-2 rounded-full border border-purple-700/30 shadow-sm font-cute dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-500/30">{record.data.type}</span>
+          {record.data.doctor && <span class="bg-stone-300 px-4 py-2 rounded-full border border-stone-400 font-cute dark:bg-slate-800 dark:border-gray-700">医生：{record.data.doctor}</span>}
+          {record.data.weight && <span class="bg-stone-300 px-4 py-2 rounded-full border border-stone-400 font-cute dark:bg-slate-800 dark:border-gray-700">体重：<span class="font-cute-number">{record.data.weight}</span></span>}
+          {record.data.temperature && <span class="bg-stone-300 px-4 py-2 rounded-full border border-stone-400 font-cute dark:bg-slate-800 dark:border-gray-700">体温：<span class="font-cute-number">{record.data.temperature}</span></span>}
         </div>
       </div>
-      
+
       <div class="prose prose-invert prose-purple max-w-none">
         <Content />
       </div>

@@ -26,7 +26,7 @@ const allRecordsForSearch = await getCollection('cats');
   <title>九儿的健康档案 - HealPurr</title>
   <link rel="stylesheet" href="/styles/fonts.css">
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-purple-950/30 to-slate-900 text-white min-h-screen">
+<body class="bg-gradient-to-br from-purple-50 via-pink-50/60 to-purple-100 text-purple-900 min-h-screen dark:from-slate-900 dark:via-purple-950/30 dark:to-slate-900 dark:text-white relative overflow-hidden">
   <Header records={allRecordsForSearch} />
 
   <main class="max-w-6xl mx-auto px-8 py-16">
@@ -34,11 +34,11 @@ const allRecordsForSearch = await getCollection('cats');
       <h1 class="text-5xl font-bold mb-6 flex items-center gap-4 font-cute">
         <div class="relative">
           <img src={cat.svg} alt={cat.name} class="w-14 h-14 drop-shadow-lg" />
-          <div class="absolute inset-0 bg-purple-400/20 rounded-full blur-xl"></div>
+          <div class="absolute inset-0 bg-purple-700/20 rounded-full blur-xl dark:bg-purple-400/20"></div>
         </div>
-        <span class="bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">{cat.name}的健康档案</span>
+        <span class="bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-pink-400 dark:via-purple-400 dark:to-pink-400">{cat.name}的健康档案</span>
       </h1>
-      <p class="text-xl text-gray-400 font-cute-light">共 <span class="font-cute-number">{sortedRecords.length}</span> 条医疗记录 🐾</p>
+      <p class="text-xl text-stone-600 font-cute-light dark:text-gray-400">共 <span class="font-cute-number">{sortedRecords.length}</span> 条医疗记录 🐾</p>
     </div>
 
     <CatSelector activeCat={catId} />

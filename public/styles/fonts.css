@@ -163,7 +163,7 @@ p {
   font-family: var(--font-alex-brush);
   font-weight: 400;
   font-size: 1.875rem;
-  color: white;
+  color: #4c1d95;
   letter-spacing: 0.05em;
   transition: color 0.3s ease;
 }
@@ -172,14 +172,25 @@ p {
   font-family: var(--font-alex-brush);
   font-weight: 400;
   font-size: 1.875rem;
-  color: white;
+  color: #7c3aed;
   letter-spacing: 0.05em;
   transition: color 0.3s ease;
+}
+
+/* 暗色模式下的 Header 标题样式 */
+html.dark .header-title,
+html.dark .header-title-accent {
+  color: white;
 }
 
 /* Header 悬停效果 */
 .group:hover .header-title,
 .group:hover .header-title-accent {
+  color: #8b5cf6;
+}
+
+html.dark .group:hover .header-title,
+html.dark .group:hover .header-title-accent {
   color: rgb(221 214 254);
 }
 
