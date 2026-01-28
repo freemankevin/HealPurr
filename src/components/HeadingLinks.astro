@@ -1,0 +1,87 @@
+---
+// 为三级标题添加链接图标的脚本组件
+---
+
+<script>
+  // 为所有三级标题添加链接图标
+  const addHeadingLinks = () => {
+    const headings = document.querySelectorAll('.prose h3');
+
+    headings.forEach((heading) => {
+      // 如果已经有链接，跳过
+      if (heading.querySelector('.header-link')) return;
+
+      // 生成锚点ID
+      const text = heading.textContent || '';
+      const anchorId = text
+        .toLowerCase()
+        .replace(/[\s\u4e00-\u9fa5]+/g, '-')
+        .replace(/[^\w\u4e00-\u9fa5-]/g, '')
+        .replace(/--+/g, '-')
+        .replace(/^-+|-+$/g, '');
+
+      // 设置ID
+      heading.id = anchorId;
+
+      // 创建链接图标
+      const link = document.createElement('a');
+      link.href = `#${anchorId}`;
+      link.className = 'header-link';
+      link.innerHTML = '#';
+      link.setAttribute('aria-label', `链接到 ${text}`);
+
+      // 点击时复制链接
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = `${window.location.origin}${window.location.pathname}#${anchorId}`;
+        navigator.clipboard.writeText(url).then(() => {
+          // 显示复制成功提示
+          const tooltip = document.createElement('div');
+          tooltip.textContent = '链接已复制！';
+          tooltip.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 9999;
+            font-size: 14px;
+            font-weight: 500;
+            animation: fadeInOut 2s ease-in-out;
+          `;
+          document.body.appendChild(tooltip);
+
+          setTimeout(() => {
+            tooltip.remove();
+          }, 2000);
+        });
+      });
+
+      // 添加到标题
+      heading.appendChild(link);
+    });
+  };
+
+  // 页面加载完成后添加链接
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addHeadingLinks);
+  } else {
+    addHeadingLinks();
+  }
+
+  // 添加淡入淡出动画
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    }
+  `;
+  document.head.appendChild(style);
+</script>

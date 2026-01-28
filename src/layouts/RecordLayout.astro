@@ -1,6 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import HeadingLinks from '../components/HeadingLinks.astro';
 
 interface Props {
   title: string;
@@ -20,7 +22,7 @@ const { title } = Astro.props;
 </head>
 <body class="bg-gradient-to-br from-purple-50 via-pink-50/60 to-purple-100 text-purple-900 min-h-screen dark:from-slate-900 dark:via-purple-950/30 dark:to-slate-900 dark:text-white relative">
   <Header />
-  
+
   <main class="max-w-4xl mx-auto px-8 py-16">
     <div class="prose">
       <slot />
@@ -28,5 +30,7 @@ const { title } = Astro.props;
   </main>
 
   <Footer />
+  <ReadingProgress />
+  <HeadingLinks />
 </body>
 </html>

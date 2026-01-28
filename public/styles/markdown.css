@@ -50,6 +50,29 @@
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   color: #e9d5ff;
+  position: relative;
+  scroll-margin-top: 2rem;
+}
+
+.prose h3:hover .header-link {
+  opacity: 1;
+}
+
+.prose .header-link {
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: #a78bfa;
+  text-decoration: none;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.prose .header-link:hover {
+  color: #c4b5fd;
 }
 
 .prose h4 {
@@ -518,6 +541,29 @@ html:not(.dark) .prose h2 {
 
 html:not(.dark) .prose h3 {
   color: #a78bfa;
+  position: relative;
+  scroll-margin-top: 2rem;
+}
+
+html:not(.dark) .prose h3:hover .header-link {
+  opacity: 1;
+}
+
+html:not(.dark) .prose .header-link {
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: #7c3aed;
+  text-decoration: none;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+html:not(.dark) .prose .header-link:hover {
+  color: #8b5cf6;
 }
 
 html:not(.dark) .prose h4 {

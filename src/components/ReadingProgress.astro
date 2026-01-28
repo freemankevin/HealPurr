@@ -1,0 +1,62 @@
+---
+// 阅读进度条和回到顶部按钮组件
+---
+
+<div id="reading-progress" class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-2">
+  <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full shadow-lg dark:from-purple-500 dark:to-pink-500 transition-all duration-300 hover:scale-105">
+    <span id="progress-text" class="text-sm font-medium">0%</span>
+  </div>
+  <button
+    id="back-to-top"
+    class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl dark:from-purple-500 dark:to-pink-500 opacity-0 pointer-events-none"
+    aria-label="回到顶部"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  #reading-progress {
+    backdrop-filter: blur(10px);
+  }
+</style>
+
+<script>
+  // 阅读进度条和回到顶部按钮逻辑
+  const progressText = document.getElementById('progress-text');
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  // 更新阅读进度
+  const updateProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.round((scrollTop / docHeight) * 100);
+
+    progressText.textContent = `${progress}%`;
+
+    // 显示/隐藏回到顶部按钮
+    if (scrollTop > 300) {
+      backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+      backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+    } else {
+      backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+      backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+  };
+
+  // 回到顶部
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // 监听滚动事件
+  window.addEventListener('scroll', updateProgress);
+
+  // 初始化
+  updateProgress();
+</script>
